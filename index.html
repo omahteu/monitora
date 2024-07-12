@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/assets/css/styles.min.css" />
+    <style>
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px; /* Espaçamento abaixo da logo */
+        }
+
+        .logo-container img {
+            max-width: 50%; /* Para garantir que a imagem seja responsiva */
+            height: auto;
+        }
+
+        #camera-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .video-section {
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .preview-image {
+            max-width: 100px;
+            max-height: 100px;
+            margin-top: 10px;
+        }
+
+        .captured-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .captured-images img {
+            max-width: 100px;
+            max-height: 100px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="logo-container">
+        <img src="./src/assets/images/logos/logo.png" alt="Logo da empresa">
+    </div>
+
+    <div id="camera-container">
+        <form id="capture-form" method="post" action="./src/php/create.php">
+            <!-- Número da Ordem de Serviço -->
+            <div class="form-group">
+                <label for="name">N° Ordem de Serviço:</label>
+                <input type="text" class="form-control" name="os" maxlength="8" required>
+            </div>
+            <!--  -->
+
+            <!-- Código da Ligação do Cliente -->
+            <div class="form-group">
+                <label for="email">Código Ligação:</label>
+                <input type="text" class="form-control" name="codigo" maxlength="8" required>
+            </div>
+            <!--  -->
+
+            <!-- Imagem Testada -->
+            <div class="form-group">
+                <label for="captured-images-testada">Testada:</label>
+                <div class="captured-images" id="captured-images-testada"></div>
+                <input type="file" name="testada" id="input-testada" style="display: none;">
+            </div>
+            <div class="form-group">
+                <video id="video-testada" class="video-section"></video>
+                <button type="button" class="btn btn-info mt-3 btn-ativar" data-section="testada">Ligar Câmera</button>
+                <button type="button" class="btn btn-primary mt-3 btn-capture" id="capture-testada" hidden>Capturar Imagem</button>
+                <button type="button" class="btn btn-danger mt-3" id="nova-testada" hidden>Nova Imagem</button>
+            </div>
+            <div class="form-group">
+                <canvas id="canvas-testada"></canvas>
+            </div>
+            <!--  -->
+
+            <!-- Hidrometro Retirado -->
+            <div class="form-group">
+                <label for="email">Hidrometro Retirado:</label>
+                <div class="captured-images" id="captured-images-hidrometro-retirado"></div>
+                <input type="file" name="hretirado" id="input-hidrometro-retirado" style="display: none;">
+            </div>
+            <div class="form-group">
+                <video id="video-hidrometro-retirado" class="video-section"></video>
+                <button type="button" class="btn btn-info mt-3 btn-ativar" data-section="hidrometro-retirado">Ligar Câmera</button>
+                <button type="button" class="btn btn-primary mt-3 btn-capture" id="capture-hidrometro-retirado" hidden>Capturar Imagem</button>
+                <button type="button" class="btn btn-danger mt-3" id="nova-hidrometro-retirado" hidden>Nova Imagem</button>
+            </div>
+            <div class="form-group">
+                <canvas id="canvas-hidrometro-retirado"></canvas>
+            </div>
+            <!--  -->
+
+            <!-- Hidrometro Novo -->
+            <div class="form-group">
+                <label for="email">Hidrometro Novo:</label>
+                <div class="captured-images" id="captured-images-hidrometro-novo"></div>
+                <input type="file" name="hnovo" id="input-hidrometro-novo" style="display: none;">
+            </div>
+            <div class="form-group">
+                <video id="video-hidrometro-novo" class="video-section"></video>
+                <button type="button" class="btn btn-info mt-3 btn-ativar" data-section="hidrometro-novo">Ligar Câmera</button>
+                <button type="button" class="btn btn-primary mt-3 btn-capture" id="capture-hidrometro-novo" hidden>Capturar Imagem</button>
+                <button type="button" class="btn btn-danger mt-3" id="nova-hidrometro-novo" hidden>Nova Imagem</button>
+            </div>
+            <div class="form-group">
+                <canvas id="canvas-hidrometro-novo"></canvas>
+            </div>
+            <!--  -->
+
+            <!-- Cavalete -->
+            <div class="form-group">
+                <label for="email">Cavalete:</label>
+                <div class="captured-images" id="captured-images-cavalete"></div>
+                <input type="file" name="cavalete" id="input-cavalete" style="display: none;">
+            </div>
+            <div class="form-group">
+                <video id="video-cavalete" class="video-section"></video>
+                <button type="button" class="btn btn-info mt-3 btn-ativar" data-section="cavalete">Ligar Câmera</button>
+                <button type="button" class="btn btn-primary mt-3 btn-capture" id="capture-cavalete" hidden>Capturar Imagem</button>
+                <button type="button" class="btn btn-danger mt-3" id="nova-cavalete" hidden>Nova Imagem</button>
+            </div>
+            <div class="form-group">
+                <canvas id="canvas-cavalete"></canvas>
+            </div>
+            <!--  -->
+
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="module" src="./src/assets/js/main.js"></script>
+
+</body>
+</html>
