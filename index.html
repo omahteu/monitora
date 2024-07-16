@@ -143,6 +143,24 @@
             </div>
             <!--  -->
 
+
+            <!-- Solicitação de Serviço -->
+            <div class="form-group">
+                <label for="email">Solicitação de Serviço:</label>
+                <div class="captured-images" id="captured-images-solicitacao"></div>
+                <input type="file" name="solicitacao" id="input-solicitacao" style="display: none;">
+            </div>
+            <div class="form-group">
+                <video id="video-solicitacao" class="video-section"></video>
+                <button type="button" class="btn btn-info mt-3 btn-ativar" data-section="solicitacao">Ligar Câmera</button>
+                <button type="button" class="btn btn-primary mt-3 btn-capture" id="capture-solicitacao" hidden>Capturar Imagem</button>
+                <button type="button" class="btn btn-danger mt-3" id="nova-solicitacao" hidden>Nova Imagem</button>
+            </div>
+            <div class="form-group">
+                <canvas id="canvas-solicitacao"></canvas>
+            </div>
+            <!--  -->
+
             <button type="submit" class="btn btn-success">Salvar</button>
         </form>
     </div>
