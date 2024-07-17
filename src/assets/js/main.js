@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    const sections = ['testada', 'hidrometro-retirado', 'hidrometro-novo', 'cavalete', 'solicitacao'];
+    const sections = ['testada', 'hidrometro-retirado', 'hidrometro-novo', 'cavalete', 'solservico'];
     
     sections.forEach(section => {
         const video = document.getElementById(`video-${section}`);
@@ -91,6 +91,7 @@ $(document).ready(function () {
           .then(result => {
               console.log(result);
               alert("Formulário enviado com sucesso!");
+              location.reload()
           }).catch(error => {
               console.error("Erro ao enviar o formulário: ", error);
               alert("Erro ao enviar o formulário.");

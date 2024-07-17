@@ -50,20 +50,44 @@
             max-height: 100px;
             margin: 0 5px;
         }
+
+        .logo-monitora {
+            width: 30%;
+        }
     </style>
 </head>
 <body>
 
 <div class="container mt-5">
     <div class="logo-container">
-        <img src="./src/assets/images/logos/logo.png" alt="Logo da empresa">
+        <img src="./src/assets/images/logos/saesa.svg" alt="Logo Saesa">
+        <img src="./src/assets/images/logos/logo.png" alt="Logo da empresa" class="logo-monitora">
     </div>
 
+    
+
     <div id="camera-container">
+        <h2>SUBSTITUIÇÃO DE HIDRÔMETROS</h2>
+        <br>
+        <br>
         <form id="capture-form" method="post" action="./src/php/create.php">
-            <!-- Número da Ordem de Serviço -->
+
+            <!-- Usuário -->
             <div class="form-group">
-                <label for="name">N° Ordem de Serviço:</label>
+                <label for="name">Nome do Usuário:</label>
+                <select class="form-control" name="usuario" id="" required>
+                    <option value="" hidden>Selecione</option>
+                    <option value="Victor Matheus de Oliveira Gama">Victor Matheus de Oliveira Gama</option>
+                    <option value="Renato Oliveira">Renato Oliveira</option>
+                    <option value="Cláudio">Cláudio</option>
+                </select>
+            </div>
+            <!--  -->
+
+
+            <!-- Número da Solicitação de Serviço -->
+            <div class="form-group">
+                <label for="name">N° da Solicitação de Serviço:</label>
                 <input type="text" class="form-control" name="os" maxlength="8" required>
             </div>
             <!--  -->
@@ -75,9 +99,9 @@
             </div>
             <!--  -->
 
-            <!-- Imagem Testada -->
+            <!-- Imagem Fachada -->
             <div class="form-group">
-                <label for="captured-images-testada">Testada:</label>
+                <label for="captured-images-testada">Fachada:</label>
                 <div class="captured-images" id="captured-images-testada"></div>
                 <input type="file" name="testada" id="input-testada" style="display: none;">
             </div>
@@ -147,17 +171,17 @@
             <!-- Solicitação de Serviço -->
             <div class="form-group">
                 <label for="email">Solicitação de Serviço:</label>
-                <div class="captured-images" id="captured-images-solicitacao"></div>
-                <input type="file" name="solicitacao" id="input-solicitacao" style="display: none;">
+                <div class="captured-images" id="captured-images-solservico"></div>
+                <input type="file" name="solservico" id="input-solservico" style="display: none;">
             </div>
             <div class="form-group">
-                <video id="video-solicitacao" class="video-section"></video>
-                <button type="button" class="btn btn-info mt-3 btn-ativar" data-section="solicitacao">Ligar Câmera</button>
-                <button type="button" class="btn btn-primary mt-3 btn-capture" id="capture-solicitacao" hidden>Capturar Imagem</button>
-                <button type="button" class="btn btn-danger mt-3" id="nova-solicitacao" hidden>Nova Imagem</button>
+                <video id="video-solservico" class="video-section"></video>
+                <button type="button" class="btn btn-info mt-3 btn-ativar" data-section="solservico">Ligar Câmera</button>
+                <button type="button" class="btn btn-primary mt-3 btn-capture" id="capture-solservico" hidden>Capturar Imagem</button>
+                <button type="button" class="btn btn-danger mt-3" id="nova-solservico" hidden>Nova Imagem</button>
             </div>
             <div class="form-group">
-                <canvas id="canvas-solicitacao"></canvas>
+                <canvas id="canvas-solservico"></canvas>
             </div>
             <!--  -->
 

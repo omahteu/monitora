@@ -17,16 +17,18 @@ class RegistroTrocasHidrometros {
     }
 
     public function create() {
-        $query = "INSERT INTO " . $this->table_name . " SET os=:os, codigo=:codigo, testada=:testada, hretirado=:hretirado, hnovo=:hnovo, cavalete=:cavalete";
+        $query = "INSERT INTO " . $this->table_name . " SET usuario=:usuario, os=:os, codigo=:codigo, testada=:testada, hretirado=:hretirado, hnovo=:hnovo, cavalete=:cavalete, solservico=:solservico";
 
         $stmt = $this->conn->prepare($query);
 
+        $stmt->bindParam(":usuario", $this->usuario);
         $stmt->bindParam(":os", $this->os);
         $stmt->bindParam(":codigo", $this->codigo);
         $stmt->bindParam(":testada", $this->testada, PDO::PARAM_LOB);
         $stmt->bindParam(":hretirado", $this->hretirado, PDO::PARAM_LOB);
         $stmt->bindParam(":hnovo", $this->hnovo, PDO::PARAM_LOB);
         $stmt->bindParam(":cavalete", $this->cavalete, PDO::PARAM_LOB);
+        $stmt->bindParam(":solservico", $this->solservico, PDO::PARAM_LOB);
 
         if ($stmt->execute()) {
             return true;

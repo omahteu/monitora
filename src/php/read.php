@@ -18,13 +18,14 @@ if ($num > 0) {
         extract($row);
         $registro_item = array(
             "id" => $id,
+            "usuario" => $usuario,
             "os" => $os,
             "codigo" => $codigo,
             "testada" => base64_encode($testada),
             "hretirado" => base64_encode($hretirado),
             "hnovo" => base64_encode($hnovo),
             "cavalete" => base64_encode($cavalete),
-            "solicitacao" => base64_encode($solicitacao)
+            "solservico" => base64_encode($solservico)
         );
         array_push($registros_arr["records"], $registro_item);
     }
